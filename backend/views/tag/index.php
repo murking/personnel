@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'frequency',
 
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
