@@ -80,10 +80,10 @@ class Basic extends \yii\db\ActiveRecord
             'householdreg' => '籍贯',
             'householdadd' => '籍贯地址',
             'address' => '联系地址',
-            'zip' => 'Zip',
-            'phone' => 'Phone',
-            'homephone' => 'Homephone',
-            'entrydate' => 'Entrydate',
+            'zip' => '邮编',
+            'phone' => '手机号',
+            'homephone' => '家庭电话',
+            'entrydate' => '进入公司时间',
         ];
     }
 
