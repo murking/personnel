@@ -38,7 +38,6 @@ AppAsset::register($this);
     $menuItems = [
 
         ['label' => '人员基本信息管理', 'url' => ['/basic/index']],
-        ['label' => '工资管理', 'url' => ['/comment/index']],
         ['label' => '用户管理', 'url' => ['/user/index']],
         ['label' => '管理员', 'url' => ['/adminuser/index']],
     ];
