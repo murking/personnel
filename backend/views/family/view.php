@@ -30,7 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'idfamily',
             'spname',
-            'spbirth',
+            //'spbirth',
+            [
+                'attribute'=>'spbirth',
+                'format'=>['date','php:Y-m-d'],
+            ],
             'sppleace',
             'spethnic',
             'spdegree',
@@ -39,8 +43,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'spphone',
             //'spbasic',
             ['label'=>'员工',
-                'value'=>$model->spbasic0->name
-                ],
+                'value'=>$model->spbasic0->name,
+            ],
             //'relation',
             ['label'=>'关系',
                 'value'=>function($model){

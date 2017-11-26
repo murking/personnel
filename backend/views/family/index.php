@@ -36,12 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'spbasic',
 
             // 'relation',
-            [
-              'attribute' => 'relation',
-               'value'=>function($model){
-                return($model->relation == 1)?['fuqin']:['fk'];
-               }
-            ],
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

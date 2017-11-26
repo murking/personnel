@@ -52,17 +52,17 @@ class Family extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idfamily' => 'Idfamily',
-            'spname' => 'Spname',
-            'spbirth' => 'Spbirth',
-            'sppleace' => 'Sppleace',
-            'spethnic' => 'Spethnic',
-            'spdegree' => 'Spdegree',
-            'sppolitic' => 'Sppolitic',
-            'spwduty' => 'Spwduty',
-            'spphone' => 'Spphone',
-            'spbasic' => 'Spbasic',
-            'relation' => 'Relation',
+            'idfamily' => '家庭ID',
+            'spname' => '姓名',
+            'spbirth' => '出生日期',
+            'sppleace' => '出生地点',
+            'spethnic' => '民族',
+            'spdegree' => '学历',
+            'sppolitic' => '政治面貌',
+            'spwduty' => '职务',
+            'spphone' => '电话',
+            'spbasic' => '员工姓名',
+            'relation' => '关系',
         ];
     }
 /**    public function getRel($insert){
