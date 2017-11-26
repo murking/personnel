@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Family */
 
 $this->title = $model->idfamily;
-$this->params['breadcrumbs'][] = ['label' => 'Families', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '家庭成员', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="family-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idfamily], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idfamily], [
+        <?= Html::a('更新', ['update', 'id' => $model->idfamily], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('删除', ['delete', 'id' => $model->idfamily], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

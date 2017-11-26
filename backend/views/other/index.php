@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\FamilySearch */
+/* @var $searchModel common\models\OthermemberSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '家庭成员';
+$this->title = 'Othermembers';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="family-index">
+<div class="othermember-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('新建家庭成员', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Othermember', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,21 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'idfamily',
-            'spname',
-            'spbirth',
-            'sppleace',
-            //'spethnic',
-            // 'spdegree',
-            // 'sppolitic',
-            // 'spwduty',
-            // 'spphone',
-            'spbasic',
-
-            // 'other',
-            // 'othe',
-            // 'oth',
-            // 'ot',
+            'idothermember',
+            'ottitle',
+            'otname',
+            'otbirth',
+            'otwduty',
+            // 'otpolitic',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

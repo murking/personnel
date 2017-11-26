@@ -37,9 +37,9 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => '家庭成员', 'url' => ['/family/index']],
-        ['label' => '人员基本信息管理', 'url' => ['/basic/index']],
+        ['label' => '员工基本信息', 'url' => ['/basic/index']],
         ['label' => '用户管理', 'url' => ['/user/index']],
-        ['label' => '管理员', 'url' => ['/adminuser/index']],
+        //['label' => '管理员', 'url' => ['/adminuser/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];
@@ -71,7 +71,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; zjh-php <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
