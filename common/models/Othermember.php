@@ -13,6 +13,9 @@ use Yii;
  * @property string $otbirth
  * @property string $otwduty
  * @property string $otpolitic
+ * @property integer $otfam
+ *
+ * @property Family $otfam0
  */
 class Othermember extends \yii\db\ActiveRecord
 {
@@ -31,9 +34,10 @@ class Othermember extends \yii\db\ActiveRecord
     {
         return [
             [['idothermember'], 'required'],
-            [['idothermember'], 'integer'],
+            [['idothermember', 'otfam'], 'integer'],
             [['otbirth'], 'safe'],
             [['ottitle', 'otname', 'otwduty', 'otpolitic'], 'string', 'max' => 45],
+            [['otfam'], 'exist', 'skipOnError' => true, 'targetClass' => Family::className(), 'targetAttribute' => ['otfam' => 'idfamily']],
         ];
     }
 
@@ -49,6 +53,15 @@ class Othermember extends \yii\db\ActiveRecord
             'otbirth' => 'Otbirth',
             'otwduty' => 'Otwduty',
             'otpolitic' => 'Otpolitic',
+            'otfam' => 'Otfam',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOtfam0()
+    {
+        return $this->hasOne(Family::className(), ['idfamily' => 'otfam']);
     }
 }

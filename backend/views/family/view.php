@@ -37,7 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'sppolitic',
             'spwduty',
             'spphone',
-            'spbasic',
+            //'spbasic',
+            ['label'=>'员工姓名',
+             'value'=>$model->spbasic0->name,
+
+            ],
             'other',
             'othe',
             'oth',

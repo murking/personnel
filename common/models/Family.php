@@ -21,6 +21,8 @@ use Yii;
  * @property integer $othe
  * @property integer $oth
  * @property integer $ot
+ *
+ * @property Basic $spbasic0
  */
 class Family extends \yii\db\ActiveRecord
 {
@@ -42,6 +44,7 @@ class Family extends \yii\db\ActiveRecord
             [['idfamily', 'spbasic', 'other', 'othe', 'oth', 'ot'], 'integer'],
             [['spbirth'], 'safe'],
             [['spname', 'sppleace', 'spethnic', 'spdegree', 'sppolitic', 'spwduty', 'spphone'], 'string', 'max' => 45],
+            [['spbasic'], 'exist', 'skipOnError' => true, 'targetClass' => Basic::className(), 'targetAttribute' => ['spbasic' => 'idbasic']],
         ];
     }
 
@@ -66,5 +69,20 @@ class Family extends \yii\db\ActiveRecord
             'oth' => 'Oth',
             'ot' => 'Ot',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSpbasic0()
+    {
+        return $this->hasOne(Basic::className(), ['idbasic' => 'spbasic']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOthermembers()
+    {
+        return $this->hasMany(Othermember::className(), ['otfam' => 'idfamily']);
     }
 }

@@ -98,6 +98,14 @@ class Basic extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getFamilies()
+    {
+        return $this->hasMany(Family::className(), ['spbasic' => 'idbasic']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getLearnexperiences()
     {
         return $this->hasMany(Learnexperience::className(), ['basicid' => 'idbasic']);
