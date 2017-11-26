@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Basic */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Basics', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '员工基本信息', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="basic-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idbasic], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idbasic], [
+        <?= Html::a('更新', ['update', 'id' => $model->idbasic], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('删除', ['delete', 'id' => $model->idbasic], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

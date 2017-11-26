@@ -36,7 +36,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-
+        ['label' => '家庭成员', 'url' => ['/family/index']],
         ['label' => '人员基本信息管理', 'url' => ['/basic/index']],
         ['label' => '用户管理', 'url' => ['/user/index']],
         ['label' => '管理员', 'url' => ['/adminuser/index']],
