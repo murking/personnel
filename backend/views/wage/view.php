@@ -34,7 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'wagpost',
             'wagdiff',
             'wagage',
-            'wagalone',
+           // 'wagalone',
+            [
+              'label'=>'独子',
+              'value'=>function($model)
+                 {
+                    switch($model->wagalone)
+                    {
+                        case '0':
+                            return '是';
+                        case '1':
+                            return '否';
+                    }
+
+                 }
+            ],
             'wagother',
             'wagreward',
             'wagde',
