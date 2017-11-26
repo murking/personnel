@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Family;
+use common\models\Department;
 
 /**
- * FamilySearch represents the model behind the search form about `common\models\Family`.
+ * DepartmentSearch represents the model behind the search form about `common\models\Department`.
  */
-class FamilySearch extends Family
+class DepartmentSearch extends Department
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class FamilySearch extends Family
     public function rules()
     {
         return [
-            [['idfamily', 'spbasic'], 'integer'],
-            [['spname', 'spbirth', 'sppleace', 'spethnic', 'spdegree', 'sppolitic', 'spwduty', 'spphone', 'relation'], 'safe'],
+            [['iddepartment'], 'integer'],
+            [['depname', 'depup', 'depshort', 'depmanager'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class FamilySearch extends Family
      */
     public function search($params)
     {
-        $query = Family::find();
+        $query = Department::find();
 
         // add conditions that should always apply here
 
@@ -59,19 +59,13 @@ class FamilySearch extends Family
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idfamily' => $this->idfamily,
-            'spbirth' => $this->spbirth,
-            'spbasic' => $this->spbasic,
+            'iddepartment' => $this->iddepartment,
         ]);
 
-        $query->andFilterWhere(['like', 'spname', $this->spname])
-            ->andFilterWhere(['like', 'sppleace', $this->sppleace])
-            ->andFilterWhere(['like', 'spethnic', $this->spethnic])
-            ->andFilterWhere(['like', 'spdegree', $this->spdegree])
-            ->andFilterWhere(['like', 'sppolitic', $this->sppolitic])
-            ->andFilterWhere(['like', 'spwduty', $this->spwduty])
-            ->andFilterWhere(['like', 'spphone', $this->spphone])
-            ->andFilterWhere(['like', 'relation', $this->relation]);
+        $query->andFilterWhere(['like', 'depname', $this->depname])
+            ->andFilterWhere(['like', 'depup', $this->depup])
+            ->andFilterWhere(['like', 'depshort', $this->depshort])
+            ->andFilterWhere(['like', 'depmanager', $this->depmanager]);
 
         return $dataProvider;
     }

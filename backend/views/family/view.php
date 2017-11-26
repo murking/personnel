@@ -38,14 +38,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'spwduty',
             'spphone',
             //'spbasic',
-            ['label'=>'员工姓名',
-             'value'=>$model->spbasic0->name,
-
-            ],
-            'other',
-            'othe',
-            'oth',
-            'ot',
+            ['label'=>'员工',
+                'value'=>$model->spbasic0->name
+                ],
+            //'relation',
+            ['label'=>'关系',
+                'value'=>function($model){
+                    switch ($model->relation){
+                        case '0':
+                            return "配偶";
+                        case '1':
+                            return "父亲";
+                        case '2':
+                            return "母亲";
+                        case '3':
+                            return "直系兄妹";
+                    }
+                }
+            ]
         ],
     ]) ?>
 

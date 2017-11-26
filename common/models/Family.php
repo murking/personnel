@@ -17,10 +17,7 @@ use Yii;
  * @property string $spwduty
  * @property string $spphone
  * @property integer $spbasic
- * @property integer $other
- * @property integer $othe
- * @property integer $oth
- * @property integer $ot
+ * @property string $relation
  *
  * @property Basic $spbasic0
  * @property Othermember[] $othermembers
@@ -42,9 +39,9 @@ class Family extends \yii\db\ActiveRecord
     {
         return [
             [['idfamily'], 'required'],
-            [['idfamily', 'spbasic', 'other', 'othe', 'oth', 'ot'], 'integer'],
+            [['idfamily', 'spbasic'], 'integer'],
             [['spbirth'], 'safe'],
-            [['spname', 'sppleace', 'spethnic', 'spdegree', 'sppolitic', 'spwduty', 'spphone'], 'string', 'max' => 45],
+            [['spname', 'sppleace', 'spethnic', 'spdegree', 'sppolitic', 'spwduty', 'spphone', 'relation'], 'string', 'max' => 45],
             [['spbasic'], 'exist', 'skipOnError' => true, 'targetClass' => Basic::className(), 'targetAttribute' => ['spbasic' => 'idbasic']],
         ];
     }
@@ -56,22 +53,24 @@ class Family extends \yii\db\ActiveRecord
     {
         return [
             'idfamily' => 'Idfamily',
-            'spname' => '配偶姓名',
-            'spbirth' => '配偶出生日期',
-            'sppleace' => '配偶籍贯',
-            'spethnic' => '配偶名族',
-            'spdegree' => '配偶学历',
-            'sppolitic' => '配偶政治面貌',
-            'spwduty' => '配偶单位及职务',
-            'spphone' => '配偶联系电话',
-            'spbasic' => '员工姓名',
-            'other' => 'Other',
-            'othe' => 'Othe',
-            'oth' => 'Oth',
-            'ot' => 'Ot',
+            'spname' => 'Spname',
+            'spbirth' => 'Spbirth',
+            'sppleace' => 'Sppleace',
+            'spethnic' => 'Spethnic',
+            'spdegree' => 'Spdegree',
+            'sppolitic' => 'Sppolitic',
+            'spwduty' => 'Spwduty',
+            'spphone' => 'Spphone',
+            'spbasic' => 'Spbasic',
+            'relation' => 'Relation',
         ];
     }
-
+/**    public function getRel($insert){
+        if ($insert==1){
+            return '配偶';
+        }
+    }
+ */
     /**
      * @return \yii\db\ActiveQuery
      */

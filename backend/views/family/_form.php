@@ -3,8 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Basic;
-use kartik\date\DatePicker;
-
 /* @var $this yii\web\View */
 /* @var $model common\models\Family */
 /* @var $form yii\widgets\ActiveForm */
@@ -18,14 +16,7 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'spname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'spbirth')->widget(DatePicker::classname(), [
-        'options' => ['placeholder' => ''],
-        'pluginOptions' => [
-            'autoclose' => true,
-            'todayHighlight' => true,
-            'format' => 'yyyy-mm-dd',
-            'language'=>'zh'
-        ]] ) ?>
+    <?= $form->field($model, 'spbirth')->textInput() ?>
 
     <?= $form->field($model, 'sppleace')->textInput(['maxlength' => true]) ?>
 
@@ -39,18 +30,15 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'spphone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'spbasic')
-        ->dropDownList(Basic::find()
+    <?= $form->field($model, 'spbasic')->dropDownList(
+            Basic::find()
             ->select(['name','idbasic'])
             ->orderBy('name')
             ->indexBy('idbasic')
-            ->column(),
-        ['prompt'=>'请选择员工']
-        )
+            ->column(),['prompt'=>'请选择员工']
+    ) ?>
 
-    ?>
-
-
+    <?= $form->field($model, 'relation')->radioList([''=>'配偶','1'=>'父亲','2'=>'母亲','3'=>'直系兄妹']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
