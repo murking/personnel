@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Basic;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Family */
@@ -16,7 +18,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'spname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'spbirth')->textInput() ?>
+    <?= $form->field($model, 'spbirth')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => ''],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'todayHighlight' => true,
+            'format' => 'yyyy-mm-dd',
+            'language'=>'zh'
+        ]] ) ?>
 
     <?= $form->field($model, 'sppleace')->textInput(['maxlength' => true]) ?>
 
@@ -30,15 +39,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'spphone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'spbasic')->textInput() ?>
+    <?= $form->field($model, 'spbasic')
+        ->dropDownList(Basic::find()
+            ->select(['name','idbasic'])
+            ->orderBy('name')
+            ->indexBy('idbasic')
+            ->column(),
+        ['prompt'=>'请选择员工']
+        )
 
-    <?= $form->field($model, 'other')->textInput() ?>
+    ?>
 
-    <?= $form->field($model, 'othe')->textInput() ?>
 
-    <?= $form->field($model, 'oth')->textInput() ?>
-
-    <?= $form->field($model, 'ot')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

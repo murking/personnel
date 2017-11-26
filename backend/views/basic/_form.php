@@ -23,7 +23,7 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'idcard')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'sex')->radioList(['1'=>'男','0'=>'女']) ?>
+    <?= $form->field($model, 'sex')->radioList(['男','女']) ?>
 
     <?= $form->field($model, 'politic')->textInput(['maxlength' => true]) ?>
 

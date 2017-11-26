@@ -23,6 +23,7 @@ use Yii;
  * @property integer $ot
  *
  * @property Basic $spbasic0
+ * @property Othermember[] $othermembers
  */
 class Family extends \yii\db\ActiveRecord
 {
@@ -55,15 +56,15 @@ class Family extends \yii\db\ActiveRecord
     {
         return [
             'idfamily' => 'Idfamily',
-            'spname' => 'Spname',
-            'spbirth' => 'Spbirth',
-            'sppleace' => 'Sppleace',
-            'spethnic' => 'Spethnic',
-            'spdegree' => 'Spdegree',
-            'sppolitic' => 'Sppolitic',
-            'spwduty' => 'Spwduty',
-            'spphone' => 'Spphone',
-            'spbasic' => 'Spbasic',
+            'spname' => '配偶姓名',
+            'spbirth' => '配偶出生日期',
+            'sppleace' => '配偶籍贯',
+            'spethnic' => '配偶名族',
+            'spdegree' => '配偶学历',
+            'sppolitic' => '配偶政治面貌',
+            'spwduty' => '配偶单位及职务',
+            'spphone' => '配偶联系电话',
+            'spbasic' => '员工姓名',
             'other' => 'Other',
             'othe' => 'Othe',
             'oth' => 'Oth',
@@ -78,6 +79,7 @@ class Family extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Basic::className(), ['idbasic' => 'spbasic']);
     }
+
     /**
      * @return \yii\db\ActiveQuery
      */

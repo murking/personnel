@@ -48,11 +48,11 @@ class Othermember extends \yii\db\ActiveRecord
     {
         return [
             'idothermember' => 'Idothermember',
-            'ottitle' => 'Ottitle',
-            'otname' => 'Otname',
-            'otbirth' => 'Otbirth',
-            'otwduty' => 'Otwduty',
-            'otpolitic' => 'Otpolitic',
+            'ottitle' => '称谓',
+            'otname' => '姓名',
+            'otbirth' => '出生日期',
+            'otwduty' => '植物',
+            'otpolitic' => '政治面貌',
             'otfam' => 'Otfam',
         ];
     }
