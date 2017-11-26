@@ -18,8 +18,8 @@ class FamilySearch extends Family
     public function rules()
     {
         return [
-            [['idfamily', 'spbasic', 'other', 'othe', 'oth', 'ot'], 'integer'],
-            [['spname', 'spbirth', 'sppleace', 'spethnic', 'spdegree', 'sppolitic', 'spwduty', 'spphone'], 'safe'],
+            [['idfamily', 'spbasic'], 'integer'],
+            [['spname', 'spbirth', 'sppleace', 'spethnic', 'spdegree', 'sppolitic', 'spwduty', 'spphone', 'relation'], 'safe'],
         ];
     }
 
@@ -62,10 +62,6 @@ class FamilySearch extends Family
             'idfamily' => $this->idfamily,
             'spbirth' => $this->spbirth,
             'spbasic' => $this->spbasic,
-            'other' => $this->other,
-            'othe' => $this->othe,
-            'oth' => $this->oth,
-            'ot' => $this->ot,
         ]);
 
         $query->andFilterWhere(['like', 'spname', $this->spname])
@@ -74,7 +70,8 @@ class FamilySearch extends Family
             ->andFilterWhere(['like', 'spdegree', $this->spdegree])
             ->andFilterWhere(['like', 'sppolitic', $this->sppolitic])
             ->andFilterWhere(['like', 'spwduty', $this->spwduty])
-            ->andFilterWhere(['like', 'spphone', $this->spphone]);
+            ->andFilterWhere(['like', 'spphone', $this->spphone])
+            ->andFilterWhere(['like', 'relation', $this->relation]);
 
         return $dataProvider;
     }

@@ -51,7 +51,7 @@ class Othermember extends \yii\db\ActiveRecord
             'ottitle' => '称谓',
             'otname' => '姓名',
             'otbirth' => '出生日期',
-            'otwduty' => '植物',
+            'otwduty' => '职务',
             'otpolitic' => '政治面貌',
             'otfam' => 'Otfam',
         ];

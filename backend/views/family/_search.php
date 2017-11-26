@@ -35,13 +35,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'spbasic') ?>
 
-    <?php // echo $form->field($model, 'other') ?>
-
-    <?php // echo $form->field($model, 'othe') ?>
-
-    <?php // echo $form->field($model, 'oth') ?>
-
-    <?php // echo $form->field($model, 'ot') ?>
+    <?php // echo $form->field($model, 'relation') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

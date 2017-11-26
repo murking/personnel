@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('新建家庭成员', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新建', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,22 +24,24 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'idfamily',
+            'idfamily',
             'spname',
             'spbirth',
             'sppleace',
-            //'spethnic',
+            'spethnic',
             // 'spdegree',
             // 'sppolitic',
             // 'spwduty',
             // 'spphone',
-            'spbasic',
+            // 'spbasic',
 
-            // 'other',
-            // 'othe',
-            // 'oth',
-            // 'ot',
-
+            // 'relation',
+            [
+              'attribute' => 'relation',
+               'value'=>function($model){
+                return($model->relation == 1)?['fuqin']:['fk'];
+               }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
