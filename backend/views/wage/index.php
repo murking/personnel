@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\WageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Wages';
+$this->title = '员工工资';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wage-index">
@@ -16,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Wage', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,11 +25,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idwage',
+            //'idwage',
+            [
+                    'attribute'=>'idwage',
+                'contentOptions'=>['width'=>'120px'],
+            ],
             'wagname',
             'wagbas',
-            'wagpost',
-            'wagdiff',
+            //'wagpost',
+            //'wagdiff',
             // 'wagage',
             // 'wagalone',
             // 'wagother',
@@ -43,8 +48,14 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'wagtax',
             // 'wagptax',
             // 'wagunion',
-            // 'wagget',
-            // 'wagdepart',
+             'wagget',
+            //'wagdepart',
+
+           [
+                'attribute'=>'wagdepart',
+                'value'=>'wagdepart0.depname'
+            ],
+
             // 'wagcreatedate',
             // 'wagupdatedate',
             ['attribute'=>'wagupdatedate',

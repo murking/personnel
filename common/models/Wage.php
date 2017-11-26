@@ -30,6 +30,7 @@ use Yii;
  * @property integer $wagdepart
  * @property string $wagcreatedate
  * @property string $wagupdatedate
+ * @property Department $wagdepart0
  */
 class Wage extends \yii\db\ActiveRecord
 {
@@ -50,6 +51,7 @@ class Wage extends \yii\db\ActiveRecord
             [['idwage'], 'required'],
             [['idwage', 'wagdepart'], 'integer'],
             [['wagname', 'wagbas', 'wagpost', 'wagdiff', 'wagage', 'wagalone', 'wagother', 'wagreward', 'wagde', 'wagshould', 'wagpension', 'wagmedical', 'waglost', 'wagfund', 'wagup', 'wagtax', 'wagptax', 'wagunion', 'wagget', 'wagcreatedate', 'wagupdatedate'], 'string', 'max' => 45],
+            [['wagdepart'], 'exist', 'skipOnError' => true, 'targetClass' => Department::className(), 'targetAttribute' => ['wagdepart' => 'iddepartment']],
         ];
     }
 
@@ -59,7 +61,7 @@ class Wage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idwage' => 'Idwage',
+            'idwage' => '员工ID',
             'wagname' => '姓名',
             'wagbas' => '基本工资',
             'wagpost' => '岗位工资',
@@ -103,5 +105,10 @@ class Wage extends \yii\db\ActiveRecord
         {
             return false;
         }
+    }
+    public function getWagdepart0()
+    {
+        return $this->hasOne(Department::className(), ['iddepartment' => 'wagdepart']);
+
     }
 }

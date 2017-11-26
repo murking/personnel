@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\wage */
 
-$this->title = $model->idwage;
-$this->params['breadcrumbs'][] = ['label' => 'Wages', 'url' => ['index']];
+$this->title = $model->wagname;
+$this->params['breadcrumbs'][] = ['label' => '员工工资表', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wage-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idwage], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idwage], [
+        <?= Html::a('修改', ['update', 'id' => $model->idwage], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('删除', ['delete', 'id' => $model->idwage], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => '你确定删除者条记录吗?',
@@ -48,7 +48,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'wagptax',
             'wagunion',
             'wagget',
-            'wagdepart',
+            //'wagdepart',
+            [
+                'attribute'=>'wagdepart',
+                'value'=>$model->wagdepart0->depname,
+            ],
             //'wagcreatedate',
         [
             'attribute'=>'wagcreatedate',
