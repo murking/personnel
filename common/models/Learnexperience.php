@@ -32,8 +32,7 @@ class Learnexperience extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idlearnexperience'], 'required'],
-            [['idlearnexperience', 'basicid'], 'integer'],
+            [['basicid'], 'integer'],
             [['period', 'scmajor', 'scduty', 'witness'], 'string', 'max' => 45],
             [['basicid'], 'exist', 'skipOnError' => true, 'targetClass' => Basic::className(), 'targetAttribute' => ['basicid' => 'idbasic']],
         ];
@@ -45,12 +44,12 @@ class Learnexperience extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idlearnexperience' => 'ID',
+            'idlearnexperience' => 'id',
             'period' => '起止日期',
-            'scmajor' => '就读学校及专业',
+            'scmajor' => '就读学校和专业',
             'scduty' => '职务',
-            'witness' => '证明人',
-            'basicid' => '员工ID',
+            'witness' => '见证人',
+            'basicid' => '员工id',
         ];
     }
 

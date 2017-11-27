@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Workper */
 
-$this->title = 'Create Workper';
-$this->params['breadcrumbs'][] = ['label' => 'Workpers', 'url' => ['index']];
+$this->title = '新建';
+$this->params['breadcrumbs'][] = ['label' => '工作业绩', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="workper-create">

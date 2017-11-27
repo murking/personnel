@@ -48,10 +48,9 @@ class Wage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idwage'], 'required'],
-            [['idwage', 'wagdepart'], 'integer'],
-            [['wagname', 'wagbas', 'wagpost', 'wagdiff', 'wagage', 'wagalone', 'wagother', 'wagreward', 'wagde', 'wagshould', 'wagpension', 'wagmedical', 'waglost', 'wagfund', 'wagup', 'wagtax', 'wagptax', 'wagunion', 'wagget', 'wagcreatedate', 'wagupdatedate'], 'string', 'max' => 45],
-            [['wagdepart'], 'exist', 'skipOnError' => true, 'targetClass' => Department::className(), 'targetAttribute' => ['wagdepart' => 'iddepartment']],
+            [['wagdepart'], 'integer'],
+            [['wagcreatedate', 'wagupdatedate'], 'safe'],
+            [['wagname', 'wagbas', 'wagpost', 'wagdiff', 'wagage', 'wagalone', 'wagother', 'wagreward', 'wagde', 'wagshould', 'wagpension', 'wagmedical', 'waglost', 'wagfund', 'wagup', 'wagtax', 'wagptax', 'wagunion', 'wagget'], 'string', 'max' => 45],
         ];
     }
 

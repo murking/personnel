@@ -32,8 +32,8 @@ class Workper extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idper', 'peridbasic'], 'required'],
-            [['idper', 'peridbasic'], 'integer'],
+            [['peridbasic'], 'required'],
+            [['peridbasic'], 'integer'],
             [['perdate', 'perstatus', 'perlevel', 'percom'], 'string', 'max' => 45],
             [['peridbasic'], 'exist', 'skipOnError' => true, 'targetClass' => Basic::className(), 'targetAttribute' => ['peridbasic' => 'idbasic']],
         ];
@@ -46,11 +46,11 @@ class Workper extends \yii\db\ActiveRecord
     {
         return [
             'idper' => 'Idper',
-            'perdate' => 'Perdate',
-            'perstatus' => 'Perstatus',
-            'perlevel' => 'Perlevel',
-            'percom' => 'Percom',
-            'peridbasic' => 'Peridbasic',
+            'perdate' => '奖惩状况',
+            'perstatus' => '奖惩状况',
+            'perlevel' => '奖惩等级',
+            'percom' => '奖惩单位',
+            'peridbasic' => '员工id',
         ];
     }
 

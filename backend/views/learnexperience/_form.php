@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use common\models\Basic;
 /* @var $this yii\web\View */
 /* @var $model common\models\Learnexperience */
 /* @var $form yii\widgets\ActiveForm */
@@ -11,10 +11,14 @@ use yii\widgets\ActiveForm;
 <div class="learnexperience-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'idlearnexperience')->textInput() ?>
-    <?= $form->field($model, 'basicid')->textInput() ?>
 
-
+    <?= $form->field($model, 'basicid')->dropDownList(Basic::find()
+        ->select(['name','idbasic'])
+        ->orderBy('name')
+        ->indexBy('idbasic')
+        ->column(),['prompt'=>'请选择员工']
+    )
+    ?>
     <?= $form->field($model, 'period')->textInput() ?>
 
     <?= $form->field($model, 'scmajor')->textInput(['maxlength' => true]) ?>

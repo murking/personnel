@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\WorkperSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Workpers';
+$this->title = '工作业绩';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="workper-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Workper', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新建', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,7 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idper',
+            //'idper',
+            'peridbasic',
+            [
+                'attribute' => 'peridbasic',
+                'label' => '员工姓名',
+                'value' => 'peridbasic0.name',
+            ],
             'perdate',
             'perstatus',
             'perlevel',
