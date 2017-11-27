@@ -12,6 +12,8 @@ use Yii;
  * @property string $depup
  * @property string $depshort
  * @property string $depmanager
+ *
+ * @property Wage[] $wages
  */
 class Department extends \yii\db\ActiveRecord
 {
@@ -41,11 +43,19 @@ class Department extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'iddepartment' => 'Iddepartment',
-            'depname' => 'Depname',
-            'depup' => 'Depup',
-            'depshort' => 'Depshort',
-            'depmanager' => 'Depmanager',
+            'iddepartment' => '部门ID',
+            'depname' => '部门',
+            'depup' => '上级部门',
+            'depshort' => '部门简称',
+            'depmanager' => '部门主管',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWages()
+    {
+        return $this->hasMany(Wage::className(), ['wagdepart' => 'iddepartment']);
     }
 }
