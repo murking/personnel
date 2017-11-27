@@ -30,6 +30,7 @@ use Yii;
  * @property string $entrydate
  *
  * @property Contract[] $contracts
+ * @property Family[] $families
  * @property Learnexperience[] $learnexperiences
  * @property Workexps[] $workexps
  * @property Workper[] $workpers
