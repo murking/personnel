@@ -41,6 +41,7 @@ AppAsset::register($this);
         ['label' => '用户管理', 'url' => ['/user/index']],
         ['label' => '员工工资', 'url' => ['/wage/index']],
         ['label' => '部门信息', 'url' => ['/department/index']],
+        ['label' => '学习经历', 'url' => ['/learnexperience/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];
