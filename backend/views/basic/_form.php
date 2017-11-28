@@ -32,7 +32,7 @@ use kartik\date\DatePicker;
         'pluginOptions' => [
             'autoclose' => true,
             'todayHighlight' => true,
-            'dateformat' => 'php: Y-m-d',
+            'format' => 'yyyy-mm-dd',
             'language'=>'zh'
         ]] ) ?>
 
@@ -45,7 +45,7 @@ use kartik\date\DatePicker;
         'pluginOptions' => [
             'autoclose' => true,
             'todayHighlight' => true,
-            'dateformat' => 'php: Y-m-d',
+            'format' => 'yyyy-mm-dd',
             'language'=>'zh'
     ]])?>
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bcec4877f62a69a7fc0b505a857ae3b",
+    "content-hash": "90d5318c655e9b77469dfe41fa3926dc",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -467,6 +467,51 @@
                 "yii2"
             ],
             "time": "2017-06-08T05:53:28+00:00"
+        },
+        {
+            "name": "slam/php-excel",
+            "version": "v4.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Slamdunk/php-excel.git",
+                "reference": "a4df1f73f80c94bc3bd922c2a5181920165f1e33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Slamdunk/php-excel/zipball/a4df1f73f80c94bc3bd922c2a5181920165f1e33",
+                "reference": "a4df1f73f80c94bc3bd922c2a5181920165f1e33",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpoffice/phpexcel": "^1.8",
+                "phpunit/phpunit": "^6.2",
+                "roave/security-advisories": "dev-master",
+                "slam/php-cs-fixer-extensions": "^1.4",
+                "slam/php-debug-r": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Slam\\Excel\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filippo Tessarotto",
+                    "email": "zoeslam@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Old faster PHPExcel",
+            "time": "2017-10-24T15:26:01+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

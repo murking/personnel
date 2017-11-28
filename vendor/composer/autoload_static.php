@@ -55,6 +55,7 @@ class ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 49,
+            'Slam\\Excel\\' => 11,
         ),
         'P' => 
         array (
@@ -175,6 +176,10 @@ class ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe
         'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 
         array (
             0 => __DIR__ . '/..' . '/stecman/symfony-console-completion/src',
+        ),
+        'Slam\\Excel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slam/php-excel/lib',
         ),
         'Psr\\Log\\' => 
         array (

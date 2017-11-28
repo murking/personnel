@@ -1,0 +1,29 @@
+{
+    "name": "slam/php-excel",
+    "description": "Old faster PHPExcel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Filippo Tessarotto",
+            "email": "zoeslam@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "mikey179/vfsStream": "^1.6",
+        "phpoffice/phpexcel": "^1.8",
+        "phpunit/phpunit": "^6.2",
+        "roave/security-advisories": "dev-master",
+        "slam/php-cs-fixer-extensions": "^1.4",
+        "slam/php-debug-r": "^1.1"
+    },
+    "autoload": {
+        "psr-4": { "Slam\\Excel\\": "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Slam\\Excel\\Tests\\": "tests/" }
+    }
+}
