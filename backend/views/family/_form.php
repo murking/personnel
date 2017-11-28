@@ -13,7 +13,7 @@ use kartik\date\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idfamily')->textInput() ?>
+
 
     <?= $form->field($model, 'spname')->textInput(['maxlength' => true]) ?>
 
@@ -49,7 +49,7 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'relation')->radioList(['0'=>'配偶','1'=>'父亲','2'=>'母亲','3'=>'直系兄妹']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '新建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

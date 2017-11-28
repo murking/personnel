@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Family */
 
-$this->title = $model->idfamily;
+$this->title = $model->spbasic0->name;
 $this->params['breadcrumbs'][] = ['label' => '家庭成员', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -28,7 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idfamily',
+            //'idfamily',
+
             'spname',
             //'spbirth',
             [

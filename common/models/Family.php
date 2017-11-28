@@ -38,7 +38,7 @@ class Family extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idfamily'], 'required'],
+
             [['idfamily', 'spbasic'], 'integer'],
             [['spbirth'], 'safe'],
             [['spname', 'sppleace', 'spethnic', 'spdegree', 'sppolitic', 'spwduty', 'spphone', 'relation'], 'string', 'max' => 45],

@@ -60,7 +60,7 @@ class Wage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idwage' => '员工ID',
+            'idwage' => '工资表ID',
             'wagname' => '姓名',
             'wagbas' => '基本工资',
             'wagpost' => '岗位工资',

@@ -24,9 +24,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idfamily',
+            //'idfamily',
+            ['attribute' => 'spbasic',
+                'label' => '员工id',
+            ],
+            ['attribute' => 'spbasic',
+                'label' => '员工姓名',
+                'value' => 'spbasic0.name',
+                ],
             'spname',
-            'spbirth',
+            //'spbirth',
+            ['attribute' => 'spbirth',
+                'format' => ['date','php: Y-m-d']
+            ],
             'sppleace',
             'spethnic',
             // 'spdegree',
@@ -35,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'spphone',
             // 'spbasic',
 
-            // 'relation',
+             'relation',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

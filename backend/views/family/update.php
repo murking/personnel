@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Family */
 
-$this->title = '更新: ' . $model->idfamily;
+$this->title = '更新: ' . $model->spbasic0->name;
 $this->params['breadcrumbs'][] = ['label' => '家庭成员', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->idfamily, 'url' => ['view', 'id' => $model->idfamily]];
 $this->params['breadcrumbs'][] = '更新';
