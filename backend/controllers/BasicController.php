@@ -8,6 +8,7 @@ use common\models\BasicSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use PHPExcel;
 
 /**
  * BasicController implements the CRUD actions for Basic model.
@@ -33,6 +34,115 @@ class BasicController extends Controller
      * Lists all Basic models.
      * @return mixed
      */
+    public function actionExport(){
+        $searchModel = new BasicSearch();
+        $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $data=Basic::find()->asArray()->all();
+        if(!$data){
+            return $this->redirect(['Country/index']);
+        }else{
+            $objPHPExcel=new PHPExcel();
+            $objPHPExcel->getProperties()->setCreator("zhangsan")
+                ->setLastModifiedBy("lisi")
+                ->setTitle("my title")
+                ->setSubject("my subject")
+                ->setDescription("my description")
+                ->setKeywords("my keywords")
+                ->setCategory("my category");
+
+            // 设置列宽
+            $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+
+            // 设置表头
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A1', '姓名')
+                ->setCellValue('B1', '部门')
+                ->setCellValue('C1', '职务')
+                ->setCellValue('C1', '身份证');
+            $n=2;
+            // 设置内容
+            foreach($data as $v){
+                $objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$v['name']);
+                $objPHPExcel->getActiveSheet()->setCellValue('B'.$n,$v['department']);
+                $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['duty']);
+                $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['idcard']);
+                $n=$n+1;
+            }
+            // 重命名
+            $objPHPExcel->getActiveSheet()->setTitle('test-sheet');
+            $objPHPExcel->setActiveSheetIndex(0);
+            // 输出
+            header('Content-Type: application/vnd.ms-excel');
+            header('Content-Disposition: attachment;filename="test.xls"');
+            header('Cache-Control: max-age=0');
+            $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');  //注意，要加“\”，否则会报错
+            $objWriter->save('php://output');
+        }
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dateProvider,
+
+        ]);
+    }
+    public function actionImport(){
+        $searchModel = new BasicSearch();
+        $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $basePath=Yii::$app->basePath;
+        //$file_url=$basePath.'\upload\excel\test.xls';
+        $filename='./../upload/excel/test.xls';
+        $objPHPExcelnew=new PHPExcel();
+        $objReader= \PHPExcel_IOFactory::createReader('Excel5');
+
+        $objPHPExcel=$objReader->load($filename);
+        $sheet=$objPHPExcel->getActiveSheet();
+        $highestRow=$sheet->getHighestRow();
+        $highestColumn=$sheet->getHighestColumn();
+        $highestColumnIndex=\PHPExcel_Cell::columnIndexFromString($highestColumn);
+        $excelData=array();
+        for($row=2;$row<=$highestRow;$row++)
+        {
+            for($col=0;$col<$highestColumnIndex;$col++)
+            {
+                $excelData[$row][]=(string)$sheet->getCellByColumnAndRow($col,$row)->getValue();
+            }
+        }
+        Yii::$app->db->createCommand()->batchInsert('basic', [
+            'idbasic',
+            'name',
+            'department',
+            'duty',
+            'idcard',
+            'sex',
+            'politic',
+            'brithdate',
+            'educationbk',
+            'degree',
+            'graduationdate',
+            'graduationsc',
+            'major',
+            'jobtitle',
+            'householdreg',
+            'householdadd',
+            'address' ,
+            'zip',
+            'phone',
+            'homephone',
+            'entrydate',
+        ],$excelData)->execute();
+        echo 'insert success.';
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dateProvider,
+            'basePath' => Yii::$app->basePath,
+            'test' => $filename,
+        ]);
+    }
+    /**
+     * Lists all Basic models.
+     * @return mixed
+     */
     public function actionIndex()
     {
         $searchModel = new BasicSearch();
@@ -41,6 +151,7 @@ class BasicController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+
         ]);
     }
 
