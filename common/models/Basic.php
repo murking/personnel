@@ -72,7 +72,7 @@ class Basic extends \yii\db\ActiveRecord
             'sex' => '性别',
             'politic' => '政治面貌',
             'brithdate' => '出生日期',
-            'educationbk' => 'Educationbk',
+            'educationbk' => '教育背景',
             'degree' => '学位',
             'graduationdate' => '毕业时间',
             'graduationsc' => '毕业学校',

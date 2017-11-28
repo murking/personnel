@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('删除', ['delete', 'id' => $model->idbasic], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '你确定删除这条信息吗？',
                 'method' => 'post',
             ],
         ]) ?>
@@ -35,10 +35,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'idcard',
             'sex',
             'politic',
-            'brithdate',
+            //'brithdate',
+            [
+                'attribute'=>'brithdate',
+                'format'=>['date','php:Y-m-d'],
+            ],
             'educationbk',
             'degree',
-            'graduationdate',
+            //'graduationdate',
+            [
+                'attribute'=>'graduationdate',
+                'format'=>['date','php:Y-m-d'],
+            ],
             'graduationsc',
             'major',
             'jobtitle',
