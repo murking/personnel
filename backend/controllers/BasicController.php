@@ -43,8 +43,8 @@ class BasicController extends Controller
     public function actionExport(){
         $searchModel = new BasicSearch();
         $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $data=Basic::find()->asArray()->all();
 
+        $data=Basic::find()->asArray()->all();
         if(!$data){
             return $this->redirect(['Country/index']);
         }else{
@@ -70,11 +70,11 @@ class BasicController extends Controller
             $n=2;
             // 设置内容
             foreach($data as $v){
-
+                $c = Contract::find()->where(['conbasic'=>$v['idbasic']])->one();
                 $objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$v['name']);
                 $objPHPExcel->getActiveSheet()->setCellValue('B'.$n,$v['department']);
                 $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['duty']);
-                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$v['']);
+                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$c['connumber']);
 
                 $n=$n+1;
             }
