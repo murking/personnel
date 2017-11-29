@@ -36,11 +36,12 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => '家庭成员', 'url' => ['/family/index']],
         ['label' => '员工基本信息', 'url' => ['/basic/index']],
         ['label' => '员工工资', 'url' => ['/wage/index']],
         ['label' => '部门信息', 'url' => ['/department/index']],
+        ['label' => '家庭成员', 'url' => ['/family/index']],
         ['label' => '学习经历', 'url' => ['/learnexperience/index']],
+        ['label' => '劳动合同', 'url' => ['/contract/index']],
         ['label' => '工作经历', 'url' => ['/workexps/index']],
         ['label' => '工作业绩', 'url' => ['/workper/index']],
     ];

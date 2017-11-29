@@ -43,6 +43,12 @@ class BasicController extends Controller
     public function actionExport(){
         $searchModel = new BasicSearch();
         $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
+<<<<<<< HEAD
+=======
+        $data=Basic::find()->asArray()->all();
+        //foreach($data as $v)
+          //  print_r($v);
+>>>>>>> add375ddc5cc107685d570ef6607b9f592fa5c1d
 
         $data=Basic::find()->asArray()->all();
         if(!$data){
@@ -74,7 +80,11 @@ class BasicController extends Controller
                 $objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$v['name']);
                 $objPHPExcel->getActiveSheet()->setCellValue('B'.$n,$v['department']);
                 $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['duty']);
+<<<<<<< HEAD
                 $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$c['connumber']);
+=======
+                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$v['idcard']);
+>>>>>>> add375ddc5cc107685d570ef6607b9f592fa5c1d
 
                 $n=$n+1;
             }
@@ -138,6 +148,18 @@ class BasicController extends Controller
             'phone',
             'homephone',
             'entrydate',
+            //'idcontract',
+            //'contype',
+            //'connumber',
+            //'conbegin',
+            //'conend',
+            //'conpleace',
+            //'conbook',
+            //'applydate',
+            //'insurancedate',
+            //'funddate',
+            //'departdate',
+            //'conbasic',
         ],$excelData)->execute();
         echo 'insert success.';
         return $this->render('index', [

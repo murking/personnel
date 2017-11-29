@@ -68,6 +68,8 @@
       <path value="$PROJECT_DIR$/vendor/.git/objects" />
       <path value="$PROJECT_DIR$/vendor/.git/hooks" />
       <path value="$PROJECT_DIR$/vendor/.git/info" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
+      <path value="$PROJECT_DIR$/vendor/slam/php-excel" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

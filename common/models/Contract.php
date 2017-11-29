@@ -52,7 +52,7 @@ class Contract extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idcontract' => 'Idcontract',
+            'idcontract' => '合同ID',
             'contype' => '合同类型',
             'connumber' => '合同编号',
             'conbegin' => '合同开始日期',
@@ -63,7 +63,7 @@ class Contract extends \yii\db\ActiveRecord
             'insurancedate' => '办理保险时间',
             'funddate' => '办理公积金时间',
             'departdate' => '离职时间',
-            'conbasic' => '员工id',
+            'conbasic' => '员工ID',
         ];
     }
 
