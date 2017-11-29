@@ -6,11 +6,7 @@ use common\models\Contract;
 use Yii;
 use common\models\Basic;
 use common\models\BasicSearch;
-use common\models\ContractSearch;
-use common\models\FamilySearch;
-use common\models\LearnexperienceSearch;
-use common\models\WorkexpsSearch;
-use common\models\Workper;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -43,13 +39,6 @@ class BasicController extends Controller
     public function actionExport(){
         $searchModel = new BasicSearch();
         $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
-<<<<<<< HEAD
-=======
-        $data=Basic::find()->asArray()->all();
-        //foreach($data as $v)
-          //  print_r($v);
->>>>>>> add375ddc5cc107685d570ef6607b9f592fa5c1d
-
         $data=Basic::find()->asArray()->all();
         if(!$data){
             return $this->redirect(['Country/index']);
@@ -80,12 +69,7 @@ class BasicController extends Controller
                 $objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$v['name']);
                 $objPHPExcel->getActiveSheet()->setCellValue('B'.$n,$v['department']);
                 $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['duty']);
-<<<<<<< HEAD
                 $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$c['connumber']);
-=======
-                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$v['idcard']);
->>>>>>> add375ddc5cc107685d570ef6607b9f592fa5c1d
-
                 $n=$n+1;
             }
             // 重命名
@@ -121,7 +105,7 @@ class BasicController extends Controller
         $excelData=array();
         for($row=2;$row<=$highestRow;$row++)
         {
-            for($col=0;$col<$highestColumnIndex;$col++)
+            for($col=0;$col<21;$col++)
             {
                 $excelData[$row][]=(string)$sheet->getCellByColumnAndRow($col,$row)->getValue();
             }
@@ -148,25 +132,37 @@ class BasicController extends Controller
             'phone',
             'homephone',
             'entrydate',
-            //'idcontract',
-            //'contype',
-            //'connumber',
-            //'conbegin',
-            //'conend',
-            //'conpleace',
-            //'conbook',
-            //'applydate',
-            //'insurancedate',
-            //'funddate',
-            //'departdate',
-            //'conbasic',
         ],$excelData)->execute();
+        $excelData2=array();
+        for($row=2;$row<=$highestRow;$row++)
+        {
+            $excelData2[$row][]=(string)$sheet->getCellByColumnAndRow(0,$row)->getValue();
+            for($col=21;$col<$highestColumnIndex;$col++)
+            {
+                $excelData2[$row][]=(string)$sheet->getCellByColumnAndRow($col,$row)->getValue();
+            }
+
+        }
+        Yii::$app->db->createCommand()->batchInsert('contract', [
+            'conbasic',
+            'contype',
+            'connumber',
+            'conbegin',
+            'conend',
+            'conpleace',
+            'conbook',
+            'applydate',
+            'insurancedate',
+            'funddate',
+            'departdate',
+            //'conbasic',
+        ],$excelData2)->execute();
+
         echo 'insert success.';
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dateProvider,
-            'basePath' => Yii::$app->basePath,
-            'test' => $filename,
+
         ]);
     }
     /**

@@ -38,8 +38,8 @@ class Contract extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idcontract'], 'required'],
-            [['idcontract', 'conbasic'], 'integer'],
+
+            [['conbasic'], 'integer'],
             [['conbegin', 'conend', 'applydate', 'insurancedate', 'funddate', 'departdate'], 'safe'],
             [['contype', 'connumber', 'conpleace', 'conbook'], 'string', 'max' => 45],
             [['conbasic'], 'exist', 'skipOnError' => true, 'targetClass' => Basic::className(), 'targetAttribute' => ['conbasic' => 'idbasic']],
