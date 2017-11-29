@@ -5,6 +5,11 @@ namespace backend\controllers;
 use Yii;
 use common\models\Basic;
 use common\models\BasicSearch;
+use common\models\ContractSearch;
+use common\models\FamilySearch;
+use common\models\LearnexperienceSearch;
+use common\models\WorkexpsSearch;
+use common\models\Workper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -89,8 +94,7 @@ class BasicController extends Controller
         $searchModel = new BasicSearch();
         $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $basePath=Yii::$app->basePath;
-        //$file_url=$basePath.'\upload\excel\test.xls';
+
         $filename='./../upload/excel/test.xls';
         $objPHPExcelnew=new PHPExcel();
         $objReader= \PHPExcel_IOFactory::createReader('Excel5');
@@ -212,6 +216,18 @@ class BasicController extends Controller
      */
     public function actionDelete($id)
     {
+        $model = Basic::findOne($id);
+        foreach ($model->contracts as $v)
+            $v->delete();
+        foreach ($model->families as $v)
+            $v->delete();
+        foreach ($model->learnexperiences as $v)
+            $v->delete();
+        foreach ($model->workexps as $v)
+            $v->delete();
+        foreach ($model->workpers as $v)
+            $v->delete();
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

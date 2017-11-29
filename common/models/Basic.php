@@ -87,7 +87,6 @@ class Basic extends \yii\db\ActiveRecord
             'entrydate' => '进入公司时间',
         ];
     }
-
     /**
      * @return \yii\db\ActiveQuery
      */
