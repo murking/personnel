@@ -44,6 +44,8 @@ class BasicController extends Controller
         $searchModel = new BasicSearch();
         $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
         $data=Basic::find()->asArray()->all();
+        //foreach($data as $v)
+          //  print_r($v);
 
         if(!$data){
             return $this->redirect(['Country/index']);
@@ -74,7 +76,7 @@ class BasicController extends Controller
                 $objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$v['name']);
                 $objPHPExcel->getActiveSheet()->setCellValue('B'.$n,$v['department']);
                 $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['duty']);
-                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$v['']);
+                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$v['idcard']);
 
                 $n=$n+1;
             }
@@ -138,6 +140,18 @@ class BasicController extends Controller
             'phone',
             'homephone',
             'entrydate',
+            //'idcontract',
+            //'contype',
+            //'connumber',
+            //'conbegin',
+            //'conend',
+            //'conpleace',
+            //'conbook',
+            //'applydate',
+            //'insurancedate',
+            //'funddate',
+            //'departdate',
+            //'conbasic',
         ],$excelData)->execute();
         echo 'insert success.';
         return $this->render('index', [
