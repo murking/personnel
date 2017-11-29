@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Contract;
 use Yii;
 use common\models\Basic;
 use common\models\BasicSearch;
@@ -43,6 +44,7 @@ class BasicController extends Controller
         $searchModel = new BasicSearch();
         $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
         $data=Basic::find()->asArray()->all();
+
         if(!$data){
             return $this->redirect(['Country/index']);
         }else{
@@ -64,14 +66,16 @@ class BasicController extends Controller
                 ->setCellValue('A1', '姓名')
                 ->setCellValue('B1', '部门')
                 ->setCellValue('C1', '职务')
-                ->setCellValue('C1', '身份证');
+                ->setCellValue('D1', '身份证');
             $n=2;
             // 设置内容
             foreach($data as $v){
+
                 $objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$v['name']);
                 $objPHPExcel->getActiveSheet()->setCellValue('B'.$n,$v['department']);
                 $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['duty']);
-                $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['idcard']);
+                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$v['']);
+
                 $n=$n+1;
             }
             // 重命名
