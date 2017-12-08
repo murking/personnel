@@ -6,7 +6,8 @@ use common\models\Contract;
 use Yii;
 use common\models\Basic;
 use common\models\BasicSearch;
-
+use common\models\UploadForm;
+use yii\web\UploadedFile;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,6 +37,23 @@ class BasicController extends Controller
      * Lists all Basic models.
      * @return mixed
      */
+    public function actionUpload(){
+        $model = new UploadForm();
+        $searchModel = new BasicSearch();
+        $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                // file is uploaded successfully
+
+                return $this->render('index', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dateProvider,
+                ]);
+            }
+        }
+        return $this->render('upload', ['model' => $model]);
+    }
     public function actionExport(){
         $searchModel = new BasicSearch();
         $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -92,8 +110,19 @@ class BasicController extends Controller
         $searchModel = new BasicSearch();
         $dateProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $uploadmodel = new UploadForm();
 
-        $filename='./../upload/excel/test.xls';
+        if (Yii::$app->request->isPost) {
+            $uploadmodel->file = UploadedFile::getInstance($uploadmodel, 'file');
+
+            if ($uploadmodel->file && $uploadmodel->validate()) {
+                $uploadmodel->file->saveAs('uploads/' . $uploadmodel->file->baseName . '.' . $uploadmodel->file->extension);
+            }
+        }
+
+
+
+        $filename='./../web/test.xls';
         $objPHPExcelnew=new PHPExcel();
         $objReader= \PHPExcel_IOFactory::createReader('Excel5');
 

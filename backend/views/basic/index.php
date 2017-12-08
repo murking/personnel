@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\BasicSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -18,10 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('新建', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
     <p>
         <?= Html::a('Excel导出', ['export'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Excel导入', ['import'], ['class' => 'btn btn-success']) ?>
-
+        <?= Html::a('Excel上传', ['upload'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -55,3 +56,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+
