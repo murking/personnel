@@ -30,7 +30,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => '人事管理',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => ['/basic/index'],
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
