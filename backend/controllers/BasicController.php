@@ -72,22 +72,75 @@ class BasicController extends Controller
 
             // 设置列宽
             $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
-            $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
-
             // 设置表头
             $objPHPExcel->setActiveSheetIndex(0)
-                ->setCellValue('A1', '姓名')
-                ->setCellValue('B1', '部门')
-                ->setCellValue('C1', '职务')
-                ->setCellValue('D1', '身份证');
+                ->setCellValue('A1', '员工ID')
+                ->setCellValue('B1', '姓名')
+                ->setCellValue('C1', '部门')
+                ->setCellValue('D1', '职务')
+                ->setCellValue('E1', '身份证')
+                ->setCellValue('F1', '性别')
+                ->setCellValue('G1', '政治面貌')
+                ->setCellValue('H1', '出生日期')
+                ->setCellValue('I1', '教育背景')
+                ->setCellValue('J1', '学位')
+                ->setCellValue('K1', '毕业时间')
+                ->setCellValue('L1', '毕业学校')
+                ->setCellValue('M1', '专业')
+                ->setCellValue('N1', '职务')
+                ->setCellValue('O1', '籍贯')
+                ->setCellValue('P1', '籍贯地址')
+                ->setCellValue('Q1', '联系地址')
+                ->setCellValue('R1', '邮编')
+                ->setCellValue('S1', '手机号')
+                ->setCellValue('T1', '家庭电话')
+                ->setCellValue('U1', '进入公司时间')
+                ->setCellValue('V1', '合同类型')
+                ->setCellValue('W1', '合同编号')
+                ->setCellValue('X1', '合同开始日期')
+                ->setCellValue('Y1', '合同结束日期')
+                ->setCellValue('Z1', '档案所在地')
+                ->setCellValue('AA1', '劳动手册')
+                ->setCellValue('AB1', '办理录用手续时间')
+                ->setCellValue('AC1', '办理保险时间')
+                ->setCellValue('AD1', '办理公积金时间')
+                ->setCellValue('AE1', '离职时间');
+
             $n=2;
             // 设置内容
             foreach($data as $v){
                 $c = Contract::find()->where(['conbasic'=>$v['idbasic']])->one();
-                $objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$v['name']);
-                $objPHPExcel->getActiveSheet()->setCellValue('B'.$n,$v['department']);
-                $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['duty']);
-                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$c['connumber']);
+                $objPHPExcel->getActiveSheet()->setCellValue('A'.$n,$v['idbasic']);
+                $objPHPExcel->getActiveSheet()->setCellValue('B'.$n,$v['name']);
+                $objPHPExcel->getActiveSheet()->setCellValue('C'.$n,$v['department']);
+                $objPHPExcel->getActiveSheet()->setCellValue('D'.$n,$v['duty']);
+                $objPHPExcel->getActiveSheet()->setCellValue('E'.$n,$v['idcard']);
+                $objPHPExcel->getActiveSheet()->setCellValue('F'.$n,$v['sex']);
+                $objPHPExcel->getActiveSheet()->setCellValue('G'.$n,$v['politic']);
+                $objPHPExcel->getActiveSheet()->setCellValue('H'.$n,$v['brithdate']);
+                $objPHPExcel->getActiveSheet()->setCellValue('I'.$n,$v['educationbk']);
+                $objPHPExcel->getActiveSheet()->setCellValue('J'.$n,$v['degree']);
+                $objPHPExcel->getActiveSheet()->setCellValue('K'.$n,$v['graduationdate']);
+                $objPHPExcel->getActiveSheet()->setCellValue('L'.$n,$v['graduationsc']);
+                $objPHPExcel->getActiveSheet()->setCellValue('M'.$n,$v['major']);
+                $objPHPExcel->getActiveSheet()->setCellValue('N'.$n,$v['jobtitle']);
+                $objPHPExcel->getActiveSheet()->setCellValue('O'.$n,$v['householdreg']);
+                $objPHPExcel->getActiveSheet()->setCellValue('P'.$n,$v['householdadd']);
+                $objPHPExcel->getActiveSheet()->setCellValue('Q'.$n,$v['address']);
+                $objPHPExcel->getActiveSheet()->setCellValue('R'.$n,$v['zip']);
+                $objPHPExcel->getActiveSheet()->setCellValue('S'.$n,$v['phone']);
+                $objPHPExcel->getActiveSheet()->setCellValue('T'.$n,$v['homephone']);
+                $objPHPExcel->getActiveSheet()->setCellValue('U'.$n,$v['entrydate']);
+                $objPHPExcel->getActiveSheet()->setCellValue('V'.$n,$c['contype']);
+                $objPHPExcel->getActiveSheet()->setCellValue('W'.$n,$c['connumber']);
+                $objPHPExcel->getActiveSheet()->setCellValue('X'.$n,$c['conbegin']);
+                $objPHPExcel->getActiveSheet()->setCellValue('Y'.$n,$c['conend']);
+                $objPHPExcel->getActiveSheet()->setCellValue('Z'.$n,$c['conpleace']);
+                $objPHPExcel->getActiveSheet()->setCellValue('AA'.$n,$c['conbook']);
+                $objPHPExcel->getActiveSheet()->setCellValue('AB'.$n,$c['applydate']);
+                $objPHPExcel->getActiveSheet()->setCellValue('AC'.$n,$c['insurancedate']);
+                $objPHPExcel->getActiveSheet()->setCellValue('AD'.$n,$c['funddate']);
+                $objPHPExcel->getActiveSheet()->setCellValue('AE'.$n,$c['departdate']);
                 $n=$n+1;
             }
             // 重命名
